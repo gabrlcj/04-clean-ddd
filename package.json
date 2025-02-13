@@ -4,8 +4,8 @@
   "description": "Design dirigido à dominio",
   "main": "index.js",
   "scripts": {
-    "test": "npx vitest run",    
-    "test:watch": "npx vitest"    
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [],
   "author": "",
