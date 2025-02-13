@@ -8,7 +8,11 @@ interface AnswerQuestionParams {
 
 export class AnswerQuestionUseCase {
   export({ instructorId, questionId, content }: AnswerQuestionParams) {
-    const answer = new Answer(content);
+    const answer = new Answer({
+      content,
+      authorId: instructorId,
+      questionId,
+    });
 
     return answer;
   }
