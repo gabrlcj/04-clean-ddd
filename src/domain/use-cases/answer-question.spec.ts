@@ -1,4 +1,4 @@
-import { expect, test } from 'vitest';
+import { expect, it } from 'vitest';
 import { AnswerQuestionUseCase } from './answer-question';
 import { AnswerRepository } from '../repositories/answer-repository';
 import { Answer } from '../entities/answer';
@@ -9,7 +9,7 @@ const fakeAnswerRepository: AnswerRepository = {
   },
 };
 
-test('create an answer', async () => {
+it('should be able to create an answer', async () => {
   const answerQuestionUseCase = new AnswerQuestionUseCase(fakeAnswerRepository);
 
   const answer = await answerQuestionUseCase.export({
