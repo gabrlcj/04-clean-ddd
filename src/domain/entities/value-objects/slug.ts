@@ -1,8 +1,8 @@
 export class Slug {
-  public value: string;
+  public value: string
 
   constructor(value: string) {
-    this.value = value;
+    this.value = value
   }
 
   /**
@@ -24,8 +24,8 @@ export class Slug {
       .replace(/[^\w-]+/g, '') // Remove special characters
       .replace(/_/g, '-') // Replace underscores with hyphens
       .replace(/--+/g, '-') // Replace double hyphens with a single hyphen
-      .replace(/-$/g, ''); // Remove trailing hyphens
+      .replace(/-$/g, '') // Remove trailing hyphens
 
-    return new Slug(slugText);
+    return new Slug(slugText)
   }
 }
