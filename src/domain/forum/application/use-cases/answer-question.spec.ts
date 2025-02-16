@@ -1,18 +1,18 @@
 import { AnswerQuestionUseCase } from './answer-question'
-import { AnswerRepository } from '../repositories/answer-repository'
+import { AnswersRepository } from '../repositories/answers-repository'
 
-const fakeAnswerRepository: AnswerRepository = {
+const fakeAnswersRepository: AnswersRepository = {
   create: async () => {},
 }
 
 it('should be able to create an answer', async () => {
-  const answerQuestionUseCase = new AnswerQuestionUseCase(fakeAnswerRepository)
+  const answerQuestionUseCase = new AnswerQuestionUseCase(fakeAnswersRepository)
 
-  const answer = await answerQuestionUseCase.export({
+  const answer = await answerQuestionUseCase.execute({
     instructorId: 'instructor-id',
     questionId: 'question-id',
-    content: 'Nova resposta',
+    content: 'New answer',
   })
 
-  expect(answer.content).toEqual('Nova resposta')
+  expect(answer.content).toEqual('New answer')
 })
