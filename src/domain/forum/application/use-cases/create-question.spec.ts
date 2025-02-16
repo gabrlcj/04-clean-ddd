@@ -2,17 +2,17 @@ import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questio
 import { CreateQuestionUseCase } from './create-question'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
-// It can be named sut (system under test) too
-let useCase: CreateQuestionUseCase
+// sut (system under test)
+let sut: CreateQuestionUseCase
 
 describe('Create Question', () => {
   beforeEach(() => {
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository()
-    useCase = new CreateQuestionUseCase(inMemoryQuestionsRepository)
+    sut = new CreateQuestionUseCase(inMemoryQuestionsRepository)
   })
 
   it('should be able to create a question', async () => {
-    const { question } = await useCase.execute({
+    const { question } = await sut.execute({
       authorId: 'author-id',
       title: 'New Title',
       content: 'New content',
