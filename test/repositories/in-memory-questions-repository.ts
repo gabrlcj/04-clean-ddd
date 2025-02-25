@@ -5,9 +5,7 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
   public items: Question[] = []
 
   async findById(questionId: string) {
-    const question = this.items.find(
-      (item) => item.id.toString() === questionId,
-    )
+    const question = this.items.find(item => item.id.toString() === questionId)
 
     if (!question) return null
 
@@ -15,11 +13,17 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
   }
 
   async findBySlug(slug: string) {
-    const question = this.items.find((item) => item.slug.value === slug)
+    const question = this.items.find(item => item.slug.value === slug)
 
     if (!question) return null
 
     return question
+  }
+
+  async save(question: Question) {
+    const itemIndex = this.items.findIndex(item => item.id === question.id)
+
+    this.items[itemIndex] = question
   }
 
   async create(question: Question) {
@@ -27,7 +31,7 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
   }
 
   async delete(question: Question) {
-    const itemIndex = this.items.findIndex((item) => item.id === question.id)
+    const itemIndex = this.items.findIndex(item => item.id === question.id)
 
     this.items.splice(itemIndex, 1)
   }
