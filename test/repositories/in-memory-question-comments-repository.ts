@@ -6,10 +6,8 @@ export class InMemoryQuestionCommentsRepository
 {
   public items: QuestionComment[] = []
 
-  async findById(questionCommentId: string) {
-    const questionComment = this.items.find(
-      (item) => item.id.toString() === questionCommentId,
-    )
+  async findById(id: string) {
+    const questionComment = this.items.find((item) => item.id.toString() === id)
 
     if (!questionComment) return null
 
