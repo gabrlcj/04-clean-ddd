@@ -14,16 +14,14 @@ describe('Delete Answer', () => {
   })
 
   it('should be able to delete a answer', async () => {
-    const newAnswer = makeAnswer(
-      {
-        authorId: new UniqueEntityID('author-id'),
-      },
-      new UniqueEntityID('answer-id'),
-    )
+    const newAnswer = makeAnswer()
 
     await inMemoryAnswersRepository.create(newAnswer)
 
-    await sut.execute({ answerId: 'answer-id', authorId: 'author-id' })
+    await sut.execute({
+      answerId: newAnswer.id.toString(),
+      authorId: newAnswer.authorId.toString(),
+    })
 
     expect(inMemoryAnswersRepository.items).toHaveLength(0)
   })
