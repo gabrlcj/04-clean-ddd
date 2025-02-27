@@ -14,20 +14,17 @@ describe('Edit Question', () => {
   })
 
   it('should be able to edit a question', async () => {
-    const newQuestion = makeQuestion(
-      {
-        authorId: new UniqueEntityID('author-id'),
-        title: 'Old title',
-        content: 'Some old content',
-      },
-      new UniqueEntityID('question-id'),
-    )
+    const newQuestion = makeQuestion({
+      authorId: new UniqueEntityID('author-id'),
+      title: 'Old title',
+      content: 'Some old content',
+    })
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
     await sut.execute({
-      questionId: 'question-id',
-      authorId: 'author-id',
+      questionId: newQuestion.id.toString(),
+      authorId: newQuestion.authorId.toString(),
       title: 'New title',
       content: 'Some new content',
     })
@@ -39,18 +36,15 @@ describe('Edit Question', () => {
   })
 
   it('should not be able to edit a question from another user', async () => {
-    const newQuestion = makeQuestion(
-      {
-        authorId: new UniqueEntityID('author-id'),
-      },
-      new UniqueEntityID('question-id'),
-    )
+    const newQuestion = makeQuestion({
+      authorId: new UniqueEntityID('author-id'),
+    })
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
     await expect(() =>
       sut.execute({
-        questionId: 'question-id',
+        questionId: newQuestion.id.toString(),
         authorId: 'not-the-author-id',
         title: 'Not my question title',
         content: 'Not my question title',
