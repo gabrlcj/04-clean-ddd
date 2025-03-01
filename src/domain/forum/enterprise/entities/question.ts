@@ -1,8 +1,8 @@
 import dayjs from 'dayjs'
 import { Slug } from './value-objects/slug'
-import { Entity } from '@/core/entities/entity'
 import { UniqueEntityID } from '@/core/entities/value-object/unique-entity-id'
 import { Optional } from '@/core/types/optional'
+import { AggregrateRoot } from '@/core/entities/aggregate-root'
 
 export interface QuestionProps {
   authorId: UniqueEntityID
@@ -14,7 +14,7 @@ export interface QuestionProps {
   updatedAt?: Date
 }
 
-export class Question extends Entity<QuestionProps> {
+export class Question extends AggregrateRoot<QuestionProps> {
   get authorId() {
     return this.props.authorId
   }
