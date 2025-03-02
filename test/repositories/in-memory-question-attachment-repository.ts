@@ -1,4 +1,4 @@
-import { QuestionAttachmentsRepository } from '@/domain/forum/application/repositories/question-attachment-list-repository'
+import { QuestionAttachmentsRepository } from '@/domain/forum/application/repositories/question-attachment-repository'
 import { QuestionAttachment } from '@/domain/forum/enterprise/entities/question-attachment'
 
 export class InMemoryQuestionAttachmentsRepository
